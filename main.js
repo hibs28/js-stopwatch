@@ -1,31 +1,29 @@
 document.addEventListener('DOMContentLoaded', function () {
 })
 
-let interval = false;
-const timeArr = [];
+const timeOut;
 let timeDiff = 0;
-const timer = 0;
+const timer;
+let timeDisplay = document.getElementById("timeHeader");
 
 const start = () => {
-  (document.getElementById("startBtn")).addEventListener("click", () => {
-    if (!interval) {
+  (document.getElementById("startBtn")).addEventListener("click", (event) => {
+    if (!timeOut) {
       timeDiff = Date.now();
-      setInterval(updateTime, 1000);
+      timeOut = setTimeOut(updateTime, 1000);
     }
+
   })
-  return timer;
-}
-const reset = (timer) => {
-  timeArr = [];
-  clearTimeout(timer);
 }
 
-const log = (timer) => {
-  timeArr.push(timer);
+const renderTime = () => {
+  timeDisplay.innerHTML.toString() = timer
+  console.log(timer)
 }
 
-function updateTime() {
+const updateTime = () => {
   timer += logTime();
+  renderTime();
 }
 
 const logTime = () => {
